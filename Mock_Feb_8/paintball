@@ -1,0 +1,11 @@
+n, m = map(int, input.split())
+
+players = [set() for _ in range(n+1)]
+
+for _ in range(m):
+  p1, p2 = map(int, input().split())
+
+  players[p1].add(p2)
+  players[p2].add(p1)
+
+shot = bullet()
