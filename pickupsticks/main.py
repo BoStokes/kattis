@@ -1,36 +1,33 @@
-# Kahn's Algorithm
-
 from sys import stdin
 from collections import deque
 
-n, m = map(int, next(stdin).strip().split())
-edges = [[] for _ in range(n)]
-in_degrees = [0] * (n + 1)
-for _ in range(m):
-    source, dest = map(int, next(stdin).strip().split())
-    edges[source].append(dest)
-    in_degrees[dest] += 1
+line = lambda: next(stdin).strip()
+
+numsticks, lines = map(int, line().split())
+sticks_on_top = [0] * numsticks
+graph = [[] for _ in range(numsticks)]
+for _ in range(lines):
+    top, bottom = map(int, line().split())
+    graph[top-1].append(bottom-1)
+    sticks_on_top[bottom-1] += 1
 
 available = deque()
-for i, v in enumerate(in_degrees):
-    if v == 0:
-        available.append(i)
+for stick_num, on_top in enumerate(sticks_on_top):
+    if on_top == 0:
+        available.append(stick_num)
 
-
-topo = []
+topo_order = []
 while available:
-    curr = available.popleft()
-    topo.append(curr)
-    for dest in edges[curr]:
-        in_degrees[dest] -= 1
-        if in_degrees[dest] == 0:
-            available.append(dest)
+    curr_stick = available.popleft()
+    topo_order.append(curr_stick + 1)
+    for stick in graph[curr_stick]:
+        sticks_on_top[stick] -= 1
+        if sticks_on_top[stick] == 0:
+            available.append(stick)
 
-valid = True
-for value in in_degrees:
-    if value > 0:
-        valid = False
-if valid:
-    print(*topo, sep='\n')
-else:
-    print('IMPOSSIBLE')
+for num in sticks_on_top:
+    if num > 0:
+        print('IMPOSSIBLE')
+        exit()
+
+print(*topo_order, sep='\n')
