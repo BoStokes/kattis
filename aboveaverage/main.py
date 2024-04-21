@@ -1,0 +1,2 @@
+C = int(input())
+

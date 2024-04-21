@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
+#include <array>
 
 using namespace std;
 
 int main() {
-    cout << stoi(" gasd6a_ ") << endl;
+    array<int, 5> a;
 }
