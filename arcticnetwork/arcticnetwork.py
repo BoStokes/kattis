@@ -46,5 +46,5 @@ for _ in range(n):
     print(mst)
 
     print(f'{sum(x[2] for x in mst):.2f}')
-    print(f'{mst[-1][2]:.2f}')
+    print(f'{list(mst)[-1][2]:.2f}')
     

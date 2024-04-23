@@ -1,3 +1,13 @@
+'''
+
+PYTHON WAS TOO SLOW
+
+MADE JAVA SOLUTION INSTEAD
+
+'''
+
+
+
 from heapq import heapify, heappop, heappush
 from math import dist
 
