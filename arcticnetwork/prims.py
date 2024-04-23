@@ -1,3 +1,5 @@
+# PRIMS ALGORITHM (FASTER)
+
 from heapq import heappush, heappop, heapify
 from math import dist
 
@@ -33,5 +35,9 @@ for _ in range(N):
             for c_dest, c_cost in edges[dest]:
                 if c_dest not in visited:
                     heappush(curr_edges, (c_cost, dest, c_dest))
-    print(mst)
+    mst.sort(key=lambda edge: edge[2])
+
+    for _ in range(1, num_sat_channels):
+        mst.pop()
+    print(f"{mst[-1][2]:.2f}")
 

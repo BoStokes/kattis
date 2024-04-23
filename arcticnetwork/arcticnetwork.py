@@ -1,3 +1,7 @@
+# KRUSKALS ALGORITHM
+
+# INCOMPLETE
+
 from math import hypot
 
 n = int(input())
