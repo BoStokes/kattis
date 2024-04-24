@@ -1,7 +1,7 @@
 import math
 m=lambda:map(int,input().split())
 for _ in range(*m()):
- h,o=m();n,p,t,k,e=[list(m())for _ in range(o)],[*range(o+1)],0,[],enumerate
+ h,o=m();r=range(o);n=[list(m())for _ in r];p=[*r];t=0;k=[];e=enumerate
  def f(x):
   if p[x]==x:return x
   p[x]=f(p[x]);return p[x]
