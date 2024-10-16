@@ -1,17 +1,17 @@
-students, _ = map(int, input().split())
+n, k = map(int, input().split())
 
-throws = []
+stack = []
 commands = input().split()
-index = 0
 
+index = 0
 while index < len(commands):
     command = commands[index]
     if command == 'undo':
         for _ in range(int(commands[index + 1])):
-            throws.pop()
+            stack.pop()
         index += 1
     else:
-        throws.append(int(command))
+        stack.append(int(command))
     index += 1
 
-print(sum(throws) % students)
+print(sum(stack) % n)
