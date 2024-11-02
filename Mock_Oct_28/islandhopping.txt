@@ -1,0 +1,30 @@
+from math import dist
+
+n = int(input())
+
+
+for i in range(n):
+    m = int(input())
+    coords = []
+    for _ in range(m):
+        x, y = map(float, input().split())
+        coords.append((x, y))
+
+    edges = [(node1, node2, dist(node1, node2)) for node1 in coords for node2 in coords if node1 != node2]
+
+    parents = [i for i in range(len(coords)+1)]
+    def find(x):
+        if parents[x] == x:
+            return x
+        parents[x] = find(parents[x])
+        return parents[x]
+    def union(x, y):
+        parents[find(x)] = find(y)
+
+    total_weight = 0
+    # take the edges in sorted order (min weight first)
+    for src, dest, weight in sorted(edges, key=lambda x: x[2]):
+        if find(src) != find(dest):
+            union(src, dest)
+            total_weight += weight
+    print("Total weight:", total_weight)
