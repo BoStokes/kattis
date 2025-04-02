@@ -1,5 +1,3 @@
-# KRUSKALS ALGORITHM (SLOWER)
-
 from math import dist
 
 N = int(input())
@@ -9,6 +7,7 @@ for _ in range(N):
 
     # src, dest, cost
     edges = [(i, j, dist(node1, node2)) for i, node1 in enumerate(nodes) for j, node2 in enumerate(nodes) if i != j]
+    # print(*edges, sep='\n')
 
     parents = [i for i in range(outposts + 1)]
     def find(x):
@@ -27,10 +26,11 @@ for _ in range(N):
             union(src, dest)
             total_weight += cost
             mst.append((src, dest, cost))
-    mst = list(sorted(mst, key=lambda edge: edge[2]))
-    for _ in range(1, num_sat_channels):
-        mst.pop()
-    # print(mst)
-    print(f'{mst[-1][2]:.2f}')
+    mst = list(sorted(mst))
+    print(mst)
+    for _ in range(num_sat_channels):
+        popped = mst.pop()
+    print(mst)
+    print(f'{sum(edge[2] for edge in mst):.2f}')
 
 
