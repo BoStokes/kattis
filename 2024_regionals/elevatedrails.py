@@ -59,5 +59,8 @@ for island_num, island_graph in islands.items():
     count = len(curr_nodes)
     steps = 0
     while count < len(island_graph):
-        new_nodes
+        new_nodes = []
+        for node in curr_nodes:
+            if visited[node]:
+                continue
     
