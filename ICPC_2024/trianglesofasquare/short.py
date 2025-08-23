@@ -1,0 +1,1 @@
+print(4-len([n for n in map(int,input().split())if n in(0,2024)]))
