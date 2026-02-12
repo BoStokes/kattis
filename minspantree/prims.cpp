@@ -37,20 +37,19 @@ int main(){
 
         vii mst;
         visited.assign(V, false);
+        pq = priority_queue<iii, vector<iii>, greater<iii>>();
         process(0);
         int total_weight = 0;
-        int edges_used = 0;
-        while (!pq.empty() && edges_used < V-1) {
+        while (!pq.empty() && mst.size() < V-1) {
             auto [w, u, v] = pq.top(); pq.pop();
             if (visited[v]) continue;
 
-            mst.emplace_back(min(u, v), (max(u, v)));
+            mst.emplace_back(min(u, v), max(u, v));
             total_weight += w;
-            edges_used++;
             process(v);
         }
-
-        if (edges_used < V-1 || E < V-1) {
+        
+        if (mst.size() < V-1) {
             cout << "Impossible\n";
         }
         else {
