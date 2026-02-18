@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-using T = std::tuple<int,int,int>;
+using T = tuple<int,int,int>;
 
 int main() {
     ios::sync_with_stdio(false);
