@@ -36,10 +36,10 @@ int calculate(int capacity, int s, int e) {
             if (d > capacity) continue;
             for (int addl_fuel = max(0, d-f); f+addl_fuel <= capacity; addl_fuel++) {
                 int new_cost = addl_fuel*price[u] + c;
-                
-                if (new_cost < cost[v][f+addl_fuel]) {
-                    cost[v][f+addl_fuel] = new_cost;
-                    pq.emplace(new_cost, f+addl_fuel, v);
+                int new_fuel = f+addl_fuel - d;
+                if (new_cost < cost[v][new_fuel]) {
+                    cost[v][new_fuel] = new_cost;
+                    pq.emplace(new_cost, new_fuel, v);
                 }
             }
         }
