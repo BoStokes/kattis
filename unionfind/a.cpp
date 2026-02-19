@@ -28,6 +28,22 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int V, E; cin >> V >> E;
-    vector<iii> edges;
+    int N, Q; cin >> N >> Q;
+
+    ranks.assign(N, 1);
+    p.assign(N, 0);
+    for (int i = 0; i < N; i++)
+        p[i] = i;
+    
+    for (int i = 0; i < Q; i++) {
+        char op;
+        int a, b;
+        cin >> op >> a >> b;
+        if (op == '=') {
+            unionSet(a, b);
+        }
+        else {
+            cout << (findSet(a) == findSet(b) ? "yes\n" : "no\n");
+        }
+    }
 }
