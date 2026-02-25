@@ -2,9 +2,11 @@
 using namespace std;
 
 typedef long long ll;
+
 typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef vector<ii> vii;
+
 typedef pair<int, ll> il;
 typedef vector<il> vil;
 
@@ -14,7 +16,17 @@ vector<vil> AL;
 vector<ll> dist;
 
 ll SSSP(int s, int t, int k) {
+    dist.assign(V, INF);
+    queue<il> q;
 
+    dist[s] = 0;
+    q.emplace(s,0);
+    while (!q.empty()) {
+        auto &[u, d] = q.front(); q.pop();
+        if (d > dist[s]) {
+            
+        }
+    }
 }
 
 int main() {
@@ -33,6 +45,7 @@ int main() {
                 int v; cin >> v;
                 ll w; cin >> w;
                 AL[u].emplace_back(v, w);
+                AL[v].emplace_back(u, w);
             }
         }
         int Q; cin >> Q;
